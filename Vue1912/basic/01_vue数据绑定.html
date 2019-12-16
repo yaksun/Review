@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+
+</head>
+<body>
+        <div id="app">
+             姓: <input type="text" v-model="firstName"> <br>
+            名: <input type="text" v-model="lastName">
+            <hr>
+            <h2>计算方式单向数据绑定</h2>
+            <input type="text" v-model="fullName1">
+            <h2>监听方式单向数据绑定</h2>
+            <input type="text" v-model="fullName2">
+            <h2>改变果去改变因</h2>
+            <input type="text" v-model="fullName3">
+        </div>
+        <script>
+           var em= new Vue({
+                el:'#app',
+                data:{
+                    firstName:'',
+                    lastName:'',
+                    fullName2:''
+                },
+                computed:{
+                    fullName1:function(){
+                       return this.firstName+' '+this.lastName
+                    },
+                    fullName3:{
+                        get(){
+                            return this.firstName + ' ' + this.lastName
+                        },
+                        set(val){
+                                let res = val.split(' ')
+                               console.log(res)
+                            this.firstName = res[0]
+                            this.lastName = res[1]
+                        }
+                    }
+                },
+                watch:{
+                    firstName:function(val){
+                            this.fullName2 = val + ' ' + this.lastName
+                    }
+                }
+            })
+
+           // 监听的第二种写法
+          em.$watch('lastName',function(val){
+              this.fullName2 = this.firstName + ' ' + val
+          })
+        </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var obj1={
+            firstName:'A',
+            lastName:'B'
+        }
+
+        Object.defineProperty(obj1,'fullname',{
+            // vue计算属性set和get的本质
+            get(){
+                return obj1.firstName+'_'+obj1.lastName
+            },
+            set(val){
+                let res = val.split('_')
+                obj1.firstName = res[0]
+                obj1.lastName = res[1]
+            }
+        })
+
+        console.log(obj1.firstName , obj1.lastName,obj1.fullname)
+        obj1.fullname='c_d'
+        console.log(obj1.firstName , obj1.lastName,obj1.fullname)
+
+
+    </script>
+</body>
+</html>

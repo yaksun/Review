@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    <style>
+        /*进入过程的样式*/
+        .ccc-enter-active{
+            transition: opacity .5s;
+        }
+        /*离开过程的样式*/
+        .ccc-leave-active{
+            transition: opacity 2s;
+        }
+        /*进入前的样式*/
+        .ccc-enter {
+            opacity: 0;
+
+        }
+        /*离开后的样式*/
+        .ccc-leave-to{
+            opacity: 0;
+
+        }
+
+
+        .bbb-enter-active{
+            animation: bbb-in .5s;
+        }
+        .bbb-leave-active{
+            animation: bbb-in .5s reverse;
+        }
+        .bbb-enter{
+
+        }
+        .bbb-leave-to{
+
+        }
+
+        @keyframes bbb-in {
+            0% {
+                /*scale放大倍数*/
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="toggleShow">切换</button>
+        <transition name="ccc">
+            <p v-if="flag">演示动画效果</p>
+        </transition>
+    </div>
+    <div id="app2">
+        <button @click="toggleShow2">切换效果</button>
+        <br>
+        <transition name="bbb">
+            <p v-show="ok" style="background: red;display: inline-block">再见了，MY LOVE</p>
+        </transition>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                flag:true
+            },
+            methods:{
+                toggleShow(){
+                    this.flag = !this.flag
+                }
+            }
+        })
+
+        new Vue({
+            el:'#app2',
+            data:{
+                ok:true
+            },
+            methods:{
+                toggleShow2(){
+                    this.ok =  !this.ok
+                }
+            }
+        })
+    </script>
+</body>
+</html>

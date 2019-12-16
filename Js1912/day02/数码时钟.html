@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        // 把数字改成占两位的字符串
+        function toDab(val) {
+            if(val<10){
+                return '0'+val
+            }else{
+                return ''+val
+            }
+        }
+
+        function tick(){
+            let aImg = document.getElementsByTagName('img')
+            let date = new Date()
+
+            let str = toDab(date.getHours()) + toDab( date.getMinutes()) + toDab( date.getSeconds())
+
+            for(let i=0;i<aImg.length;i++){
+                aImg[i].src = "./img1/"+ str.charAt(i) +".png"
+
+            }
+
+        }
+        window.onload = function () {
+            tick()
+            setInterval(function () {
+                tick()
+            },1000)
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <img src="./img1/0.png" alt="">
+        <img src="./img1/0.png" alt="">
+        :
+        <img src="./img1/0.png" alt="">
+        <img src="./img1/0.png" alt="">
+        :
+        <img src="./img1/0.png" alt="">
+        <img src="./img1/0.png" alt="">
+    </div>
+</body>
+</html>

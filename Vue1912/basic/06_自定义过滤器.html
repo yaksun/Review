@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div id="app">
+         {{mydate}}
+        <h2>格式化时间</h2>
+        <p v-cloak> {{mydate | toFormat}}</p>
+
+
+    </div>
+    <div id="app2">
+        <h3>局部过滤器</h3>
+        <p v-cloak>{{mydate2 | toFormat2}}</p>
+    </div>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <!--引入格式化时间的插件-->
+    <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.js"></script>
+    <script>
+        // 必须写在最上面
+        Vue.filter('toFormat',function(value,format="YYYY-MM-DD HH:MM:ss"){
+            // moment使用语法
+            return moment(value).format(format)
+        })
+        new Vue({
+            el:'#app',
+            data:{
+                mydate:new Date()
+            },
+
+
+        })
+
+        // 定义全局过滤器
+
+        new Vue({
+            el:'#app2',
+            data:{
+                mydate2:new Date()
+            },
+            filters:{
+                toFormat2:function(value,format="YYYY-MM-DD"){
+                    return moment(value).format(format)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+
+</head>
+<body>
+    <div id="app1">
+            <p v-toupper="msg1"></p>
+    </div>
+    <div id="app2">
+            <p v-tolower="msg2"></p>
+    </div>
+    <script>
+        // 指令名只能小写 定义全局指令
+        Vue.directive('toupper',function(el,binding){
+                el.innerHTML = binding.value.toUpperCase()
+        })
+        new Vue({
+            el:'#app1',
+            data:{
+                msg1:'app1 is WORKS'
+            }
+        })
+        new Vue({
+            el:'#app2',
+            data:{
+                msg2:'APP2 is works'
+            },
+            // 定义局部指令
+            directives:{
+                tolower:function(el,binding){
+                    el.innerHTML = binding.value.toLowerCase()
+                }
+            }
+        })
+    </script>
+</body>
+</html>

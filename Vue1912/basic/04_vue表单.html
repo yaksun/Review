@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <form action="" @submit.prevent="showData">
+            姓名: <input type="text" v-model="username"> <br>
+            密码: <input type="password" v-model="password"> <br>
+            性别: <input type="radio" v-model="sex" id="man" name="sex" value="1"> <label for="man"><span>男</span></label>
+            <input type="radio" v-model="sex" id="felman" name="sex" value="2"> <label for="felman"><span>女</span></label> <br>
+            爱好: <input type="checkbox" value="1" id="cb1" name="hobby" v-model="hobby"><label for="cb1"><span>篮球</span></label>
+            <input type="checkbox" value="2"  id="cb2" name="hobby" v-model="hobby"><label for="cb2"><span>足球</span></label>
+            <input type="checkbox"  value="3" id="cb3"  name="hobby" v-model="hobby"><label for="cb3"><span>游泳</span></label> <br>
+            居住城市: <select name="city" id="" v-model="city">
+            <option :value="c.name"  v-for="(c,index) in cities" :key="index" >{{c.name}}</option>
+        </select> <br>
+            <input type="submit" value="提交"><input type="reset" value="重置">
+        </form>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                username:'',
+                password:'',
+                sex:'',
+                hobby:[],
+                city:'',
+                cities:[
+                    {
+                        id:1,
+                        name:'广州'
+                    },
+                    {
+                        id:2,
+                        name:'北京'
+                    },
+                    {
+                        id:3,
+                        name:'上海'
+                    }
+                ]
+            },
+            methods:{
+                showData(){
+                    const {username,password,sex,hobby,city} = this
+                    console.log(username,password,sex,hobby,city)
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

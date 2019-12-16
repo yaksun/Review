@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="./08plugin/myPlugin.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-toupper="msg"></p>
+    </div>
+    <script>
+        Vue.use(myPlugin)
+        Vue.globalFn()
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'i am working'
+            }
+        })
+
+        vm.$mySee()
+    </script>
+</body>
+</html>

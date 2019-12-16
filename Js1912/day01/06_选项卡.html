@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: #ccc;
+            border:1px solid pink;
+            display: none;
+        }
+        .active{
+            background: yellow;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let aDiv = document.getElementsByTagName('div')
+            let aBtn = document.getElementsByTagName('button')
+
+            for(let i=0;i<aBtn.length;i++){
+
+                aBtn[i].index = i
+                aBtn[i].onclick = function () {
+
+                    // 循环清空div和button上的样式
+                    for(let j=0;j<aDiv.length;j++){
+                        aDiv[j].style.display = 'none'
+                        aBtn[j].className = ''
+                    }
+
+                    this.className = 'active'
+                    aDiv[this.index].style.display = 'block'
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <button class="active">选项1</button>
+    <button>选项2</button>
+    <button>选项3</button>
+    <button>选项4</button>
+    <div style="display: block">1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+</body>
+</html>

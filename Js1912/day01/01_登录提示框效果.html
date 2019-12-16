@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 40px;
+            display: none;
+            background: #ccc;
+            border: 1px solid pink;
+        }
+    </style>
+    <script>
+        function show(val) {
+            var oDiv = document.getElementById('div1')
+            if(val){
+                oDiv.style.display='block'
+            }else{
+                oDiv.style.display='none'
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div onmouseover="show(true)" onmouseout="show(false)">
+        <input type="checkbox" id="check"><label for="check" ><span>两周内免登录</span></label>
+    </div>
+    <div id="div1">选择后两周之内免登录</div>
+</body>
+</html>

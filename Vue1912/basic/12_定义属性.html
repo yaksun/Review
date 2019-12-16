@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+            /*
+    *   value
+    *   writable       可编辑的
+    *   configurable  可重新定义的
+    *   enumerable    可枚举的
+    *
+    * */
+            var obj1={
+                firstName:'C',
+                lastName:'D'
+            }
+
+            Object.defineProperty(obj1,'fullName',{
+                    value:'g_j',
+                // 是否可以修改
+                    writable:false,
+                // 是否可以枚举key值
+                    enumerable:true,
+                    // 是否可以重新定义属性
+                    configurable:true
+            })
+
+            console.log(obj1.fullName)
+
+            var keys = Object.keys(obj1)
+            console.log(keys)
+            obj1.fullName='a_k'
+            console.log('修改之后'+obj1.fullName)
+
+            Object.defineProperty(obj1,'fullName',{
+                value:'g_j',
+                writable:false,
+                enumerable:false,
+                configurable:false
+            })
+
+            console.log('重新定义后'+obj1.fullName)
+
+            let flag = obj1.hasOwnProperty('fullName')
+            console.log(flag)
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <ul id="ul1">
+        <li>湖北武汉</li>
+        <li>广州广东</li>
+        <li>湖南长沙</li>
+    </ul>
+    <script>
+        var arr1 = document.getElementsByTagName('li')
+        console.log(arr1)
+        console.log(arr1.forEach)
+        console.log(arr1 instanceof Array)
+        console.log(arr1.length)
+
+        // 两种写法都可以
+        // var newArr = Array.prototype.slice.call(arr1)
+        var newArr = [].slice.call(arr1)
+        console.log(newArr)
+        console.log(newArr.forEach)
+        console.log(newArr instanceof Array)
+        console.log(newArr.length)
+    </script>
+</body>
+</html>

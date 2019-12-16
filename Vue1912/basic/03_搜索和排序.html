@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="keyWords" @keyup.enter="enterSearch($event)"> <button @click="doSearch">搜索</button>
+        <br><button @click="changeType(0)">按原来顺序</button>
+        <br><button @chick="changeType(1)">按年龄升序</button>
+        <br><button @click="changeType(2)">按年龄降序</button>
+        <ul>
+            <li v-for="(p,index) in messageList">{{p.name}}-- {{p.age}}</li>
+        </ul>
+    </div>
+    <script>
+            new Vue({
+                el:'#app',
+                data:{
+                    message:[
+                        {name:'刘德华',age:50},
+                        {name:'赵丽颖',age:35},
+                        {name:'古天乐',age:40},
+                        {name:'天天',age:18}
+                    ],
+                    keyWords:'',
+                    tempKey:'',
+                    newMessage:[],
+                    type:0
+                },
+                computed:{
+                    messageList:function(){
+                        const {message,tempKey,type} = this
+                        fMessage = message.filter(p=> p.name.indexOf(tempKey) != -1)
+
+
+                        switch(type){
+                            case 1 :
+                                // fMessage按年龄升序
+                                // 有bug
+                                fMessage.sort(function(p1,p2){
+                                    return p1.age-p2.age
+                                })
+                                break;
+                            case 2 :
+                                fMessage.sort(function(p1,p2){
+                                    return p2.age-p1.age
+                                })
+                                break;
+                            default:
+                                console.log('000')
+                                break;
+
+                        }
+
+
+                        return  fMessage
+                    }
+                },
+                methods:{
+                    enterSearch(){
+                      this.doSearch()
+                    },
+                    doSearch(){
+                        console.log(this.keyWords)
+                        this.tempKey = this.keyWords.trim()
+                        // 清空输入框
+                        // this.keyWords=''
+                        console.log(this.tempKey)
+                    },
+                    changeType(val){
+                        this.type = val
+                    }
+
+                },
+
+
+            })
+    </script>
+</body>
+</html>

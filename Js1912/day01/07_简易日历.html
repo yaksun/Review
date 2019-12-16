@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #main{
+            width: 400px;
+            height: 500px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .container{
+            height: 80%;
+            width: 100%;
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+            grid-template-columns:1fr 1fr 1fr ;
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+        }
+        .container div{
+            background: aqua;
+        }
+        #main .content{
+            flex: 1;
+            border: 2px solid yellow;
+            margin-top: 10px;
+        }
+
+    </style>
+    <script>
+        window.onload = function () {
+            let oContainer = document.getElementsByClassName('container')[0]
+            let aDiv = oContainer.getElementsByTagName('div')
+            let oContent = document.getElementsByClassName('content')[0]
+            let oTxtArr =[
+                '你好啊',
+                '二月',
+                '三月三',
+                '四月',
+                '五月做什么好',
+                '六月去那玩',
+                '七月你在哪',
+                '八月去爬山',
+                '九月去游泳',
+                '十月减肥',
+                '十一月',
+                '十二月...'
+            ]
+
+            oContent.innerHTML=  ' <p>一月</p><span>你好啊</span>'
+            for(let i=0;i<aDiv.length;i++){
+
+                aDiv[i].index = i
+                aDiv[i].onmouseover = function () {
+
+                    for(let j=0;j<aDiv.length;j++){
+                        aDiv[j].style.background='aqua'
+                    }
+
+                    this.style.background='gray'
+                    oContent.innerHTML = ' <p>'+ (this.index+1) +'月</p><span>'+ oTxtArr[this.index] +'</span>'
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="main">
+
+    <div class="container">
+        <div id="div1" class="old" style="background: gray">1</div>
+        <div id="div2" class="old">2</div>
+        <div id="div3" class="old">3</div>
+        <div id="div4" class="old">4</div>
+        <div id="div5" class="old">5</div>
+        <div id="div6" class="old">6</div>
+        <div id="div7" class="old">7</div>
+        <div id="div8" class="old">8</div>
+        <div id="div9" class="old">9</div>
+        <div id="div10" class="old">10</div>
+        <div id="div11" class="old">11</div>
+        <div id="div12" class="old">12</div>
+    </div>
+    <div class="content">
+
+    </div>
+</div>
+
+</body>
+</html>

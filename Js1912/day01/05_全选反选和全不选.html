@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            let oBtn1 = document.getElementById('btn1')
+            let oBtn2 = document.getElementById('btn2')
+            let oBtn3 = document.getElementById('btn3')
+
+            let aCheckbox = document.getElementsByTagName('input')
+
+            oBtn1.onclick = function () {
+                for(var i=0;i < aCheckbox.length;i++){
+                    // 元素选中状态 checked为true
+                    aCheckbox[i].checked = true
+                }
+
+            }
+            oBtn2.onclick = function () {
+                for(var i=0;i<aCheckbox.length;i++){
+                    aCheckbox[i].checked = false
+                }
+            }
+            oBtn3.onclick = function () {
+                for(var i=0;i<aCheckbox.length;i++){
+                    if(aCheckbox[i].checked == true){
+                        aCheckbox[i].checked = false
+                    }else{
+                        aCheckbox[i].checked = true
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<button id="btn1">全选</button>
+<button id="btn2">全不选</button>
+<button id="btn3">反选</button>
+<!--ul>li*8>input:checkbox>{$} 快速生成元素-->
+<!--.container>div#div$*9>{$}-->
+<ul>
+    <li><input type="checkbox" name="" id="">1</li>
+    <li><input type="checkbox" name="" id="">2</li>
+    <li><input type="checkbox" name="" id="">3</li>
+    <li><input type="checkbox" name="" id="">4</li>
+    <li><input type="checkbox" name="" id="">5</li>
+    <li><input type="checkbox" name="" id="">6</li>
+    <li><input type="checkbox" name="" id="">7</li>
+    <li><input type="checkbox" name="" id="">8</li>
+</ul>
+
+
+
+</body>
+</html>

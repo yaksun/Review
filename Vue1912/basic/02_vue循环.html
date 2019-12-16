@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+
+</head>
+<body>
+      <div id="app">
+          <ul>
+              <li v-for="(p,index) in message" :key="index">
+                  {{p.name}}---- {{p.age}}<button @click="delP(index)">删除</button> ---- <button @click="updP(index,{name:'111',age:80})">更新</button>
+              </li>
+          </ul>
+      </div>
+      <script>
+          new Vue({
+              el:"#app",
+              data:{
+                  message:[
+                      {name:'刘德华',age:50},
+                      {name:'赵丽颖',age:35},
+                      {name:'古天乐',age:40},
+                      {name:'天天',age:18}
+                  ],
+                  message2:[
+                      {name:'刘德华',age:50},
+                      {name:'赵丽颖',age:35},
+                      {name:'古天乐',age:40},
+                      {name:'天天',age:18}
+                  ]
+              },
+              methods:{
+                  delP(index){
+                      this.message.splice(index,1)
+                  },
+                  updP(index,val){
+                      this.message.splice(index,1,val)
+                  }
+              }
+          })
+      </script>
+</body>
+</html>

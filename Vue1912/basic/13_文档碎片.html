@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul id="ul1">
+        <li>value默认值</li>
+        <li>writable可改写的</li>
+        <li>enumerable可枚举的</li>
+        <li>configurable属性可重新定义的</li>
+    </ul>
+    <button  onclick="show()">点击一下</button>
+    <script>
+        function show() {
+            let fragment = document.createDocumentFragment()
+            let oUl = document.getElementById('ul1')
+
+
+            let val
+            while(val=oUl.firstChild){
+                console.log(val)
+                fragment.appendChild(val)
+            }
+
+            [].slice.call(fragment.children).forEach(
+                item => item.textContent='全部要记住的'
+            )
+
+            oUl.appendChild(fragment)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #btn1{
+            margin-right: 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="./02_2.css"  id="rel1">
+    <script>
+        function changeFace(val) {
+            let oLink = document.getElementById('rel1')
+            if(val==2){
+                oLink.href='./02_2.css'
+            }else{
+                oLink.href='./02_1.css'
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btn1" onclick="changeFace(1)">皮肤1</button>
+    <button id="btn2" onclick="changeFace(2)">皮肤2</button>
+</body>
+</html>

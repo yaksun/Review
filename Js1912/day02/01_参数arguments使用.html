@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+        }
+    </style>
+    <script>
+
+        // 获取非行间样式函数
+        function getStyle(obj,key) {
+            if(obj.currentStyle){
+                // 兼容IE
+                console.log(obj.currentStyle[key])
+            }else{
+                console.log(window.getComputedStyle(obj,false)[key])
+
+            }
+        }
+        function operStyle(obj,key,val){
+            // arguments 表示函数所有的参数
+            if(arguments.length == 2){
+                // 只能获取行间样式
+                // console.log(obj.style[key])
+
+
+                getStyle(obj,key)
+            }else{
+                obj.style[key] = val
+            }
+        }
+        window.onload = function () {
+            let oBtn1 = document.getElementById('btn1')
+            let oBtn2 = document.getElementById('btn2')
+            let oDiv = document.getElementById('div1')
+
+            oBtn1.onclick = function () {
+
+                operStyle(oDiv,'background-color')
+            }
+
+            oBtn2.onclick = function () {
+                operStyle(oDiv,'background','red')
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <button id="btn1">获取样式</button>
+    <button id="btn2">设置样式</button>
+    <div id="div1"></div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app" name="test">
+        我是文本节点
+    </div>
+    <script>
+        var oDiv = document.getElementById('app')
+        console.log(oDiv)
+        console.log('标签节点'+oDiv.nodeType)
+
+        var oAttr = oDiv.getAttributeNode('name')
+        console.log(oAttr)
+        console.log('属性节点'+oAttr.nodeType)
+
+        var oTxt = oDiv.firstChild
+        console.log(oTxt)
+        console.log('文本节点'+oTxt.nodeType)
+    </script>
+</body>
+</html>
